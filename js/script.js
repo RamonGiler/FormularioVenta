@@ -22,3 +22,22 @@ function addProduct() {
     displayProducts();
     clearForm();
 }
+function displayProducts() {
+    const productTableBody = document.getElementById('productTableBody');
+    productTableBody.innerHTML = '';
+
+    products.forEach((product, index) => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${product.productName}</td>
+            <td>${product.category}</td>
+            <td>${product.quantity}</td>
+            <td>${product.expiryDate}</td>
+            <td>${product.price.toFixed(2)}</td>
+            <td><button onclick="sellProduct(${index})">Vender</button></td>
+        `;
+
+        productTableBody.appendChild(row);
+    });
+}
