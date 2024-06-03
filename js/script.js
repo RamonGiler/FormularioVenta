@@ -42,3 +42,15 @@ function displayProducts() {
         productTableBody.appendChild(row);
     });
 }
+function clearForm() {
+    document.getElementById('product-form').reset();
+}
+
+function sellProduct(index) {
+    if (products[index].quantity > 0) {
+        products[index].quantity -= 1;
+        displayProducts();
+    } else {
+        alert('Producto agotado');
+    }
+}
