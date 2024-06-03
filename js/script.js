@@ -30,6 +30,7 @@ function displayProducts() {
         const row = document.createElement('tr');
 
         row.innerHTML = `
+            <th scope="row">${index + 1}</th>
             <td>${product.productName}</td>
             <td>${product.category}</td>
             <td>${product.quantity}</td>
