@@ -54,3 +54,30 @@ function sellProduct(index) {
         alert('Producto agotado');
     }
 }
+
+function filterProducts() {
+    const searchProduct = document.getElementById('searchProduct').value.toLowerCase();
+    const searchCategory = document.getElementById('searchCategory').value.toLowerCase();
+    const filteredProducts = products.filter(product => {
+        return product.productName.toLowerCase().includes(searchProduct) && 
+               (searchCategory === "" || product.category.toLowerCase() === searchCategory);
+    });
+
+    const productTableBody = document.getElementById('productTableBody');
+    productTableBody.innerHTML = '';
+
+    filteredProducts.forEach((product, index) => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${product.productName}</td>
+            <td>${product.category}</td>
+            <td>${product.quantity}</td>
+            <td>${product.expiryDate}</td>
+            <td>${product.price.toFixed(2)}</td>
+            <td><button onclick="sellProduct(${index})">Vender</button></td>
+        `;
+
+        productTableBody.appendChild(row);
+    });
+}
